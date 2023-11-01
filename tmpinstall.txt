@@ -1,9 +1,26 @@
+step 1:
+
 apt-get update \
 && export DEBIAN_FRONTEND=noninteractive \
-&& apt-get -y install build-essential gdb cmake cppcheck git zip unzip \
+&& apt-get -y install build-essential gdb cmake cppcheck git pkg-config zip unzip \
 && apt-get autoremove -y \
 && apt-get clean -y \
 && rm -rf /var/lib/apt/lists/*
 
+step 2:
+
 git submodule init \
-&& git submodule update
+&& git submodule update \
+&& ./bootstrap-vcpkg.sh
+
+step 2 - alt:
+
+git submodule init \
+&& git submodule update \
+&& git reset --hard 077c0746be3773fdd443af52cbe5c3cc26379a15 \
+&& ./bootstrap-vcpkg.sh
+
+step 3:
+
+vcpkg integrate install \
+&& vcpkg install gtest

@@ -12,6 +12,6 @@ target_include_directories(ExampleLib
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(ExampleLib PRIVATE fmt::fmt fmt::fmt-header-only)
+# target_link_libraries(ExampleLib PRIVATE fmt::fmt fmt::fmt-header-only)
 
 add_subdirectory(test)

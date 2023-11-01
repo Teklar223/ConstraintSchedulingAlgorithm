@@ -1,17 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include "Document.h"
-#include <windows.h>
-#include <cstdio>
-#include <fcntl.h>
-#include <io.h>
+//#include <windows.h>
+//#include <cstdio>
+//#include <fcntl.h>
+//#include <io.h>
 
 
 
-int main()
+int main(int argc, char *argv[])
 {
     std::cout << "HELLO WORLD" << std::endl;
-
+    /*
     std::ofstream MyFile("HELLOWORLD.txt");
     MyFile << "Files can be tricky, but it is fun enough!";
     MyFile.close();
@@ -27,6 +27,6 @@ int main()
     };
 
     doc.print(std::cout);
-
+    */
     //return 0;
 }

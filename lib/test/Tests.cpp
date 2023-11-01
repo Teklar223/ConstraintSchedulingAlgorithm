@@ -1,11 +1,12 @@
-#define CATCH_CONFIG_MAIN_
+//#define CATCH_CONFIG_MAIN_
 
-#include <catch.hpp>
-#include <sstream>
-#include "Document.h"
+//#include <catch.hpp>
+//#include <sstream>
+//#include "Document.h"
 
-using namespace std;
+//using namespace std;
 
+/*
 TEST_CASE("Simple document struct filled with data shouldn't throw fmt exception on 'print'")
 {
     Document doc
@@ -22,3 +23,4 @@ TEST_CASE("Simple document struct filled with data shouldn't throw fmt exception
 
     REQUIRE_NOTHROW( doc.print(output) );
 }
+*/

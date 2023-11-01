@@ -1,4 +1,13 @@
-FROM mcr.microsoft.com/devcontainers/universal:2-linux
+FROM mcr.microsoft.com/vscode/devcontainers/base:0-buster
+# SRC = https://github.com/axel-op/vscode-devcontainer-cpp-vcpkg/blob/master/.devcontainer/Dockerfile
+
+# This Dockerfile's base image has a non-root user with sudo access. Use the "remoteUser"
+# property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
+# will be updated to match your local UID/GID (when using the dockerFile property).
+# See https://aka.ms/vscode-remote/containers/non-root-user for details.
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
 ENV VCPKG_ROOT /com.docker.devenvironments.code/vcpkg
 
@@ -7,7 +16,14 @@ RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     #
     # Install C++ tools and Git
-    && apt-get -y install build-essential gdb cmake cppcheck git zip unzip \
+    && apt-get -y install build-essential gdb make cmake cppcheck git pkg-config zip unzip  \
+    #
+    # [Optional] Update UID/GID if needed
+    && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
+    groupmod --gid $USER_GID $USERNAME \
+    && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+    && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
+    fi \
     #
     # Clean up
     && apt-get autoremove -y \
@@ -19,7 +35,7 @@ RUN git clone https://github.com/Microsoft/vcpkg ${VCPKG_ROOT} \
     && cd ${VCPKG_ROOT} \
     # This is (for now) the way vcpkg handles versioning: freezing the cloned repo at a specific commit!
     # See https://github.com/microsoft/vcpkg/issues/1681.
-    && git reset --hard 077c0746be3773fdd443af52cbe5c3cc26379a15 \
+    # && git reset --hard 077c0746be3773fdd443af52cbe5c3cc26379a15 \
     && ./bootstrap-vcpkg.sh
 
 ENV PATH "${VCPKG_ROOT}:${PATH}"
