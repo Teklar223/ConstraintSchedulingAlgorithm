@@ -3,5 +3,6 @@
         "iosfwd": "cpp",
         "ios": "cpp",
         "fstream": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }
