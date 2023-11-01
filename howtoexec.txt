@@ -1,0 +1,7 @@
+step 1 - Build makefiles (cd to project root)
+
+    cmake --preset base -S . -B build
+
+step 2 - Build exe
+
+    cmake --build build
