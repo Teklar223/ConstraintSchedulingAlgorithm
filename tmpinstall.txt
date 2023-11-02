@@ -8,8 +8,8 @@ apt-get update \
 && rm -rf /var/lib/apt/lists/*
 
 step 2:
-
-git submodule init \
+git config --global --add safe.directory /com.docker.devenvironments.code \
+&& git submodule init \
 && git submodule update \
 && ./bootstrap-vcpkg.sh
 

@@ -3,7 +3,7 @@
 {
 	"name": "Default Linux Universal", 
 	"build": {
-		"dockerfile":"Dockerfile" // More info: https://containers.dev/guide/dockerfile^
+		"dockerfile":"Dockerfile" // More info: https://containers.dev/guide/dockerfile
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
